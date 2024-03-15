@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UserApplication</name>
+    </assembly>
+    <members>
+        <member name="M:UserApplication.Controllers.UserController.GetUsers(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get All Users
+            </summary>
+            <param name="name">Filter user by name</param>
+            <param name="pageNumber"></param>
+            <param name="pagesize"></param>
+            <returns>All the users</returns>
+        </member>
+        <member name="M:UserApplication.Controllers.UserController.GetUserById(System.Int32)">
+            <summary>
+            Get user by id
+            </summary>
+            <param name="id">User id</param>
+            <returns>A user with provided Id</returns>
+        </member>
+        <member name="M:UserApplication.Controllers.UserController.CreateUser(UserApplication.Models.CreateUserDto)">
+            <summary>
+            Create User
+            </summary>
+            <param name="createUserDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserApplication.Controllers.UserController.UpdateUser(System.Int32,UserApplication.Models.UpdateUserDto)">
+            <summary>
+            Update User
+            </summary>
+            <param name="userid"></param>
+            <param name="updateUserDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserApplication.Controllers.UserController.PartiallyUpdateUser(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{UserApplication.Models.UpdateUserDto})">
+            <summary>
+            Updat user partially
+            </summary>
+            <param name="userid"></param>
+            <param name="userData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserApplication.Controllers.UserController.DeleteUser(System.Int32)">
+            <summary>
+            Delete User
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UserApplication.Migrations.userMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:UserApplication.Migrations.userMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UserApplication.Migrations.userMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:UserApplication.Migrations.userMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:UserApplication.Models.CreateUserDto">
+            <summary>
+            DTO for User creation
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.CreateUserDto.Name">
+            <summary>
+            Name of user
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.CreateUserDto.Email">
+            <summary>
+            Email of user
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.CreateUserDto.Password">
+            <summary>
+            Password of user
+            </summary>
+        </member>
+        <member name="T:UserApplication.Models.UserDto">
+            <summary>
+            DTO for Getting users
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.UserDto.Id">
+            <summary>
+            Id of user
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.UserDto.Name">
+            <summary>
+            Name of user
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.UserDto.Email">
+            <summary>
+            Email of user
+            </summary>
+        </member>
+        <member name="P:UserApplication.Models.UserDto.Password">
+            <summary>
+            password of user
+            </summary>
+        </member>
+    </members>
+</doc>
