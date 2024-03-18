@@ -20,13 +20,6 @@
             <param name="id">User id</param>
             <returns>A user with provided Id</returns>
         </member>
-        <member name="M:UserApplication.Controllers.UserController.CreateUser(UserApplication.Models.CreateUserDto)">
-            <summary>
-            Create User
-            </summary>
-            <param name="createUserDto"></param>
-            <returns></returns>
-        </member>
         <member name="M:UserApplication.Controllers.UserController.UpdateUser(System.Int32,UserApplication.Models.UpdateUserDto)">
             <summary>
             Update User

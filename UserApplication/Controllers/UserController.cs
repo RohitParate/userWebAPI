@@ -71,22 +71,22 @@ namespace UserApplication.Controllers
 
         }
 
-        /// <summary>
-        /// Create User
-        /// </summary>
-        /// <param name="createUserDto"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult> CreateUser([FromBody] CreateUserDto createUserDto)
-        {
-            var userData = _mapper.Map<Entities.User>(createUserDto);
+        ///// <summary>
+        ///// Create User
+        ///// </summary>
+        ///// <param name="createUserDto"></param>
+        ///// <returns></returns>
+        //[HttpPost]
+        //public async Task<ActionResult> CreateUser([FromBody] CreateUserDto createUserDto)
+        //{
+        //    var userData = _mapper.Map<Entities.User>(createUserDto);
 
-            await _userRepository.CreateUserAsync(userData);
+        //    await _userRepository.CreateUserAsync(userData);
 
-            await _userRepository.SaveChangesAsync();
+        //    await _userRepository.SaveChangesAsync();
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         /// <summary>
         /// Update User

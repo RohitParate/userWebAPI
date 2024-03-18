@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -6,11 +7,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using UserApplication.Entities;
+using UserApplication.Models;
 using UserApplication.Services;
 
 namespace UserApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("auth")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
@@ -18,12 +20,17 @@ namespace UserApplication.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IMapper _mapper;
 
-        public AuthenticationController(IUserRepository userRepository, IConfiguration configuration)
+
+
+        public AuthenticationController(IUserRepository userRepository, IConfiguration configuration, IMapper mapper)
         {
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
             _configuration = configuration ??
                throw new ArgumentNullException(nameof(configuration));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
         }
         public class AuthenticationRequestBody
         {
@@ -47,7 +54,8 @@ namespace UserApplication.Controllers
         //    }
         //} 
 
-        [HttpPost("authenticate")]
+        [HttpPost]
+        [Route("login")]
         public async Task<ActionResult<string>> Authenticate(AuthenticationRequestBody authenticationRequestBody)
         {
             //1 : validate the username and password
@@ -93,6 +101,19 @@ namespace UserApplication.Controllers
             }
 
             return user;
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<ActionResult> CreateUser([FromBody] CreateUserDto createUserDto)
+        {
+            var userData = _mapper.Map<Entities.User>(createUserDto);
+
+            await _userRepository.CreateUserAsync(userData);
+
+            await _userRepository.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }
