@@ -45,10 +45,19 @@ namespace UserApplication.Controllers
             }
             var (users, paginationMetadata) = await _userRepository.GetUsersAsync(name,pageNumber, pagesize);
 
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
+            Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
 
             return Ok(_mapper.Map<IEnumerable<UserDto>>(users));
             // here we are mapping users data with UserDto 
+        }
+
+        [HttpGet]
+        [Route("session")]
+        public async Task<ActionResult<UserDto>> GetUserSession()
+        {
+            var userId = User.Claims.FirstOrDefault().Value;
+            var currentUser = await GetUserById(int.Parse(userId));
+            return Ok(currentUser);
         }
 
         /// <summary>
